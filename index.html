@@ -38,13 +38,13 @@
       <p>
         The StrikePro soccer ball combines professional-grade materials with cutting-edge technology for unmatched performance on the field. Designes for champions.
       </p>
-      <a href="#pricing" class="cta-button">Shop Now <i class="fas fa-arrow-right"></i></a>
+      <a href="#pricing" class="button button__cta">Shop Now &nbsp;<i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
   <section class="newsletter">
     <div class="container">
-      <h2>Stay in the Game!</h2>
+      <h2 class="section-title">Stay in the Game!</h2>
       <p>Subscribe to our newsletter for exclusive deals, soccer tips, and new product announcements.</p>
       <form id="form" action="https://www.freecodecamp.org/email-submit">
         <input
@@ -52,32 +52,48 @@
           name="email"
           id="email"
           placeholder="enter your email address"
+          aria-label="Enter your email address to subscribe to our newsletter"
           required
           >
         <input
           type="submit"
           id="submit"
-          value="Subscribe now!"
+          class="button"
+          value="Subscribe now"
           >
+        <button
+          type="submit"
+          class="button button__newsletter"
+          >Subscribe now &nbsp;<i class="fa-regular fa-paper-plane"></i>
+        </button>
       </form>
     </div>
   </section>
 
-  <section class="features" id="features">
+  <section class="features">
     <div class="container">
       <h2 class="section-title">Why Choose StrikePro</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
+      <div class="card-container">
+        <div class="card card--feature">
+          <div class="feature-icon">
+            <i class="fas fa-bullseye"></i>
+          </div>
           <h3>Pinpoint Accuracy</h3>
           <p>Our patented 32-panel design ensures perfect aerodynamics and consistent flight path
             for precise shots and passes.
           </p>
         </div>
-        <div class="feature-card">
+        <div class="card card--feature">
+          <div class="feature-icon">
+            <i class="fas fa-tint"></i>
+          </div>
           <h3>All-Weather Performance</h3>
           <p>Water-resistant technology maintains ball integrity and performance in rain, mud, or shine.</p>
         </div>
-        <div class="feature-card">
+        <div class="card card--feature">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
           <h3>Exceptional Durability</h3>
           <p>Constructed with reinforced synthetic leather that whithstands intense gameplay and maintains shape</p>
         </div>
@@ -89,11 +105,9 @@
     <div class="container">
       <h2 class="section-title">Watch The StrikePro In Action</h2>
       <div class="video-container">
-        <div class="video-wrapper">
           <iframe id="video" width="1071" height="602" src="https://www.youtube.com/embed/eGUor824a74" title="Nike Football  - Winner Stays" 
           frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
         <div class="video-description">
           <p>See how the StrikePro performs in real match conditions. Professional players demonstrate the ball's exceptional control,
              accuracy, and durability.</p>
@@ -104,12 +118,11 @@
 
   <section class="product" id="product">
     <div class="container">
-      <div class="product-image">
+
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Football_Pallo_valmiina-cropped.jpg"
           alt="Close up photo of StrikePro soccer ball on grass"
-          
           >
-      </div>
+
       <div class="product-info">
         <h2 class="section-title">Engineered for Excellence</h2>
         <p>The StrikePro soccer ball features a butyl bladder for optimal air retention, a textured surface
@@ -119,17 +132,17 @@
           <div class="spec-item">FIFA Quality Pro Certified</div>
           <div class="spec-item">32-panel Construction</div>
           <div class="spec-item">Butyl Bladder</div>
-          <div class="spec-item">Machice-Stiched</div>
+          <div class="spec-item">Machine-Stitched</div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="pricing" id="pricing">
-    <div id="container">
+    <div class="container">
       <h2 class="section-title">Choose Your Perfect Ball</h2>
-      <div class="pricing-grid">
-        <div class="pricing-card">
+      <div class="card-container">
+        <div class="card card--pricing">
           <div class="pricing-header">
             <h3>Training Edition</h3>
             <p class="price">$29<span>.99</span></p>
@@ -144,7 +157,7 @@
             <a href="#">Select</a>
           </div>
         </div>
-        <div class="pricing-card">
+        <div class="card card--pricing">
           <div class="pricing-header">
             <h3>Match Edition</h3>
             <p class="price">$49<span>.99</span></p>
@@ -160,7 +173,7 @@
             <a href="#">Select</a>
           </div>
         </div>
-        <div class="pricing-card">
+        <div class="card card--pricing">
           <div class="pricing-header">
             <h3>Professianal Edition</h3>
             <p class="price">$79<span>.99</span></p>
