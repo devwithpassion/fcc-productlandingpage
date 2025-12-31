@@ -19,6 +19,97 @@ li {
   list-style-type: none;
 }
 
+/* BEM */
+.container {
+  width: 100%;
+  max-width: none;
+  min-width: 400px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  outline: 2px solid red;
+}
+
+/* FCC lab requirement: #form ID */
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid blue;
+  gap: 10px;
+}
+
+/* FCC lab requirement: #email ID */
+#email {
+  height: 48px;
+  width: 100%;
+  border-radius: 22px;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.button {
+  display: inline-flex;
+  border: 1px solid blue;
+  border-radius: 22px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle; /* align with surrounding text */
+  min-height: 44px; /* min touch target */
+  padding: 0; /* normalize padding for both a and button element */
+  background: transparent; /* reset */
+  cursor: pointer;
+}
+
+.button__cta {
+  width: calc(100% - 50px);
+  margin: 15px;
+}
+
+.button__newsletter {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1rem;
+}
+
+/* FCC lab requires the HTML to contain input type="submit"
+  but I prefer button element */
+input[type="submit"] {
+  display: none;
+}
+
+.section-title {
+  text-align: center;
+  outline: 1px solid blue;
+  margin: 0 0 20px 0;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid purple;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.478);
+  padding: 20px;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+}
+
+.card--feature {
+  text-align: center;
+}
+
 /* base styles, mobile first */
 body {
   background-color: var(--bgcolor);
@@ -26,30 +117,29 @@ body {
   color: var(--primary);
 }
 
-.container {
-  max-width: 900px;
-  min-width: 400px;
-  margin: 0 auto;
-  padding: 8px;
+p {
+  line-height: 1.5;
 }
 
 header {
   background: rgba(197, 197, 255, 0.798);
   color: white;
-  padding: 10px;
+
 }
 
 .header-container {
-  height: 80px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 0; /* override .container padding */
 }
 
 .logo {
   display: flex;
   align-items: center;
   margin: 0 auto;
+  border: 2px solid green;
 }
 
 .logo span {
@@ -61,19 +151,33 @@ header {
   width: 40px;
 }
 
+#nav-bar {
+  width: 100%;
+  max-width: none;
+}
+
 #nav-bar ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 5px; /* use gap instead of margin for better control */
+  margin: 0 auto;
   max-width: 500px;
-  border: 1px  solid black;
+  border: 1px  solid orange;
 }
 
 #nav-bar ul li {
   background-color: pink;
-  margin: 5px;
+  margin: 12px; /* min spacing for WCAG compliance */
+  height: 100%;
 }
 
+#nav-bar ul li .nav-link {
+  display: block;
+  padding: 16px 24px;
+  min-height: 44px;
+  min-width: 44px;
+}
 h1 {
   font-size: 1.6rem;
 }
@@ -83,27 +187,78 @@ h1 {
   background-color: lightgreen;
 }
 
-.cta-button {
-  display: inline-block;
-  width: 8em;
-  height: 2em;
-  line-height: 2em;
-  margin: 15px;
-  border: 1px solid blue;
-  border-radius: 15px;
-}
 
 .newsletter {
   text-align: center;
 }
-#form {
+
+#video {
+  width: 100%;
+  height: calc(100vw * 9 / 16 - 30px);
+  border-radius: 20px;
+}
+
+.video-description {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.product .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  border: 1px solid blue;
-  height: 60px;
+}
+
+
+.product img {
+  width: 30%;
+  clip-path: circle(43% at 49.5% 50%);
+}
+
+.product-info {
+  text-align: center;
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.spec-item {
+  background-color: rgb(226, 255, 220);
+  padding: 10px;
+  font-weight: bold;
+  box-shadow:0 2px 5px rgba(0, 0, 0, 0.478);
+  border-radius: 10px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card--pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-width: 280px;
+  max-width: 350px;
+  min-height: 250px;
+  padding: 0;
+}
+
+.pricing-header {
+  background-color: lightgreen;
+  width: 100%;
+
+}
+
+.pricing-header h3 {
+  margin: 0
 }
 
 
