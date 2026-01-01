@@ -1,7 +1,18 @@
+/* problems so far
+1. for viewport width < 366px, the .nav-link wrap into
+  three rows and cover the hero text "Experience Precision"
+
+
+*/
+
 /* variables */
 :root{
-  --primary: rgb(43, 4, 4);
-  --bgcolor: rgb(248, 254, 241);
+  --primary-color: rgb(43, 4, 4);
+  --secondary-color: whitesmoke;
+  --primary-bgcolor: rgb(248, 254, 241);
+  --secondary-bgcolor: darkgreen;
+  --footer-bgcolor: rgb(44, 44, 44);
+  --secondary-link: lightgreen;
 }
 
 /* reset */
@@ -21,12 +32,10 @@ li {
 
 /* BEM */
 .container {
-  width: 100%;
-  max-width: none;
-  min-width: 400px;
+  width: 100vw;
+  min-width: 320px;
   margin: 0 auto;
   padding: 20px 20px;
-  outline: 2px solid red;
 }
 
 /* FCC lab requirement: #form ID */
@@ -36,7 +45,7 @@ li {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border: 1px solid blue;
+  outline: 1px solid blue;
   gap: 10px;
 }
 
@@ -52,7 +61,7 @@ li {
 
 .button {
   display: inline-flex;
-  border: 1px solid blue;
+  border: 1px solid #333333;
   border-radius: 22px;
   align-items: center;
   justify-content: center;
@@ -61,18 +70,30 @@ li {
   padding: 0; /* normalize padding for both a and button element */
   background: transparent; /* reset */
   cursor: pointer;
+  font-size: 1.1rem;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  background-color: var(--secondary-link);
 }
 
 .button__cta {
   width: calc(100% - 50px);
   margin: 15px;
+  background-color: var(--primary-bgcolor);
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: 2px solid var(--secondary-link);
 }
 
-.button__newsletter {
-  width: 100%;
-  padding: 10px;
-  font-size: 1.1rem;
+.button__cta:hover {
+  background-color: transparent;
+  color: var(--primary-bgcolor);
 }
+
 
 /* FCC lab requires the HTML to contain input type="submit"
   but I prefer button element */
@@ -104,11 +125,21 @@ input[type="submit"] {
 
 .feature-icon {
   font-size: 2.5rem;
+  color: var(--secondary-bgcolor);
 }
 
 .card--feature {
   text-align: center;
+  background-color: var(--primary-bgcolor);
+  color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s;
 }
+
+.card--feature:hover {
+  transform: translateY(-2px);
+}
+
 
 /* base styles, mobile first */
 body {
@@ -122,9 +153,13 @@ p {
 }
 
 header {
-  background: rgba(197, 197, 255, 0.798);
+  background-color: var(--secondary-bgcolor);
   color: white;
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.3);
 }
 
 .header-container {
@@ -132,19 +167,21 @@ header {
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  padding: 10px 0; /* override .container padding */
+  padding: 10px 0 0; /* override .container padding */
 }
 
-.logo {
+.logo a {
   display: flex;
   align-items: center;
-  margin: 0 auto;
-  border: 2px solid green;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
 }
 
-.logo span {
+.logo :is(a, a:hover, a:focus, a:visited) {
   font-size: 2em;
-  margin-left: 20px;
+  color: white;
+  margin-left: 5px;
 }
 
 #header-img {
@@ -160,42 +197,55 @@ header {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 5px; /* use gap instead of margin for better control */
-  margin: 0 auto;
-  max-width: 500px;
-  border: 1px  solid orange;
+  gap: 12px; /* use gap instead of margin for better control */
+  margin: 0 10px;
 }
 
-#nav-bar ul li {
-  background-color: pink;
-  margin: 12px; /* min spacing for WCAG compliance */
-  height: 100%;
-}
 
-#nav-bar ul li .nav-link {
+#nav-bar .nav-link {
   display: block;
   padding: 16px 24px;
   min-height: 44px;
   min-width: 44px;
+  color: var(--secondary-link);
+  font-weight: bold;
 }
+
+#nav-bar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
 h1 {
   font-size: 1.6rem;
 }
 
 .hero {
   text-align: center;
-  background-color: lightgreen;
+  background-color: var(--secondary-bgcolor);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Soccer_Ball_%2833246801238%29.jpg/1280px-Soccer_Ball_%2833246801238%29.jpg')
+      center no-repeat, 
+    var(--secondary-bgcolor);
+  margin-top: 177px;
+  color: var(--secondary-color);
 }
 
-
+/* Newsletter */
 .newsletter {
   text-align: center;
+}
+
+.newsletter :is(input, button) {
+  border: 2px solid var(--secondary-bgcolor);
+  transition: all 0.3s;
+  height: 48px;
 }
 
 #video {
   width: 100%;
   height: calc(100vw * 9 / 16 - 30px);
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .video-description {
@@ -209,9 +259,8 @@ h1 {
   align-items: center;
 }
 
-
 .product img {
-  width: 30%;
+  width: 180px;
   clip-path: circle(43% at 49.5% 50%);
 }
 
@@ -228,11 +277,18 @@ h1 {
 }
 
 .spec-item {
+  color: var(--primary-color);
   background-color: rgb(226, 255, 220);
   padding: 10px;
   font-weight: bold;
-  box-shadow:0 2px 5px rgba(0, 0, 0, 0.478);
+  box-shadow:0 2px 5px rgba(0, 0, 0, 0.8);
   border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.spec-item:hover {
+  transform: translateY(-2px);
+  cursor: default;
 }
 
 .card-container {
@@ -244,24 +300,121 @@ h1 {
 .card--pricing {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  min-width: 280px;
-  max-width: 350px;
-  min-height: 250px;
+  justify-content: space-between;
+  align-items: stretch; /* to fix the ul width adjusted to the width of the content inside li 
+                           it forces the .pricing-body to expand to full width of .card--pricing */
+  width: 90%;
+  min-width: 320px;
+  max-width: 400px;
+  gap: 10px;
   padding: 0;
 }
 
-.pricing-header {
-  background-color: lightgreen;
-  width: 100%;
+.card--feature, .card--pricing:hover {
 
+}
+
+.pricing-header {
+  background-color: var(--secondary-bgcolor);
+  color: var(--secondary-color);
+  width: 100%;
+  text-align: center;
+  padding: 15px 0 5px;
+  border-radius: 10px 10px 0 0;
 }
 
 .pricing-header h3 {
-  margin: 0
+  margin: 0 auto 10px auto;
+  font-size: 1.3rem;
 }
 
+.pricing-header p {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: bold;
+}
 
+.pricing-header span {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+.pricing-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px; /* horizontal padding*/
+}
+
+.pricing-body ul {
+  width: 100%;
+}
+
+.pricing-body li {
+  padding-block: 10px; /* vertical spacing */
+}
+
+.pricing-body li i {
+  color: green;
+}
+
+.pricing-body a {
+  margin: 20px 0;
+}
+
+/* footer */
+footer {
+  background-color: var(--footer-bgcolor);
+  color: var(--secondary-color);
+  line-height: 32px
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.footer-section {
+  outline: 1px dotted;
+  padding: 15px;
+}
+
+.footer-section h3 {
+  outline: 1px solid;
+  margin-top: 0;
+}
+
+footer a {
+  color: var(--secondary-link);
+  display: inline-block;
+}
+
+footer li a:hover {
+  transform: scale(1.03);
+  padding-left: 0.05em;
+
+}
+
+.copyright {
+  margin-top: 20px;
+  text-align: center;
+  outline: 1px solid;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  ;
+}
+
+.features, .product {
+  background-color: var(--secondary-bgcolor);
+  color: var(--secondary-color);
+}
+
+#features, #pricing, #in-action, #product, #pricing, #newsletter {
+  scroll-margin-top: 190px; /* to make the scroll destination not covered by the header */
+}
 /* tablets & small laptop */
 @media screen and (min-width: 750px) {
 
