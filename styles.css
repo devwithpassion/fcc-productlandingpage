@@ -1,7 +1,4 @@
-/* problems so far
-1. for viewport width < 366px, the .nav-link wrap into
-  three rows and cover the hero text "Experience Precision"
-
+/* problems so far:
 
 */
 
@@ -15,9 +12,15 @@
   --secondary-link: lightgreen;
 }
 
+
 /* reset */
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 235px; /* fix scroll from nav-link to sections */
+  scroll-behavior: smooth;
 }
 
 body, p, a, ul, li {
@@ -109,8 +112,11 @@ input[type="submit"] {
 
 .card-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  /* align-items: stretch; this unable to make card heights the same.
+  I use align-self for .card instead */
 }
 
 .card {
@@ -121,6 +127,8 @@ input[type="submit"] {
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.478);
   padding: 20px;
+  width: clamp(280px, 100vh, 400px);
+  align-self: stretch;
 }
 
 .feature-icon {
@@ -136,9 +144,6 @@ input[type="submit"] {
   transition: all 0.3s;
 }
 
-.card--feature:hover {
-  transform: translateY(-2px);
-}
 
 
 /* base styles, mobile first */
@@ -155,7 +160,7 @@ p {
 header {
   background-color: var(--secondary-bgcolor);
   color: white;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -227,9 +232,18 @@ h1 {
     url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Soccer_Ball_%2833246801238%29.jpg/1280px-Soccer_Ball_%2833246801238%29.jpg')
       center no-repeat, 
     var(--secondary-bgcolor);
-  margin-top: 177px;
   color: var(--secondary-color);
 }
+
+.hero p {
+  margin: 0 auto;
+  width: clamp(100px, 50vh, 500px);
+}
+
+.hero a {
+  width: clamp(60px, 50vh, 400px);
+}
+
 
 /* Newsletter */
 .newsletter {
@@ -293,7 +307,7 @@ h1 {
 
 .card-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -303,15 +317,14 @@ h1 {
   justify-content: space-between;
   align-items: stretch; /* to fix the ul width adjusted to the width of the content inside li 
                            it forces the .pricing-body to expand to full width of .card--pricing */
-  width: 90%;
-  min-width: 320px;
-  max-width: 400px;
   gap: 10px;
   padding: 0;
+  transition: all 0.3s;
 }
 
-.card--feature, .card--pricing:hover {
 
+.card--feature:hover, .card--pricing:hover {
+  transform: translateY(-2px);
 }
 
 .pricing-header {
@@ -342,11 +355,14 @@ h1 {
 .pricing-body {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 0 20px; /* horizontal padding*/
+  height: 100%; /* with justify-content, make the ul aligned top and the button aligned bottom */
 }
 
 .pricing-body ul {
   width: 100%;
+  padding-left: 10%;
 }
 
 .pricing-body li {
@@ -412,11 +428,8 @@ footer li a:hover {
   color: var(--secondary-color);
 }
 
-#features, #pricing, #in-action, #product, #pricing, #newsletter {
-  scroll-margin-top: 190px; /* to make the scroll destination not covered by the header */
-}
-/* tablets & small laptop */
-@media screen and (min-width: 750px) {
+/* larger phones, tablets & small laptop */
+@media screen and (min-width: 640px) {
 
 }
 
@@ -424,4 +437,3 @@ footer li a:hover {
 @media screen and (min-width: 1024px) {
 
 }
-
