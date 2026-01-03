@@ -1,5 +1,6 @@
 /* problems so far:
-
+1. Unable to adjust the value of scroll-padding-top based on the height of header
+2. portrait shape on small devices. Why?
 */
 
 /* variables */
@@ -41,27 +42,6 @@ li {
   padding: 20px 20px;
 }
 
-/* FCC lab requirement: #form ID */
-#form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  outline: 1px solid blue;
-  gap: 10px;
-}
-
-/* FCC lab requirement: #email ID */
-#email {
-  height: 48px;
-  width: 100%;
-  border-radius: 22px;
-  padding: 5px 10px;
-  text-align: center;
-  font-size: 1.1rem;
-}
-
 .button {
   display: inline-flex;
   border: 1px solid #333333;
@@ -79,7 +59,9 @@ li {
 }
 
 .button:hover {
-  background-color: var(--secondary-link);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--secondary-link);
+  border-color: var(--secondary-link);
 }
 
 .button__cta {
@@ -106,7 +88,6 @@ input[type="submit"] {
 
 .section-title {
   text-align: center;
-  outline: 1px solid blue;
   margin: 0 0 20px 0;
 }
 
@@ -237,17 +218,43 @@ h1 {
 
 .hero p {
   margin: 0 auto;
-  width: clamp(100px, 50vh, 500px);
+  width: clamp(310px, 80vh, 600px);
 }
 
 .hero a {
-  width: clamp(60px, 50vh, 400px);
+  width: clamp(180px, 35vh, 250px);
 }
 
 
 /* Newsletter */
-.newsletter {
+.newsletter .container {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+
+/* FCC lab requirement: #form ID */
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: min(100%, 500px);
+}
+
+/* FCC lab requirement: #email ID */
+#email {
+  height: 48px;
+  width: 100%;
+  border-radius: 22px;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 1.1rem;
 }
 
 .newsletter :is(input, button) {
@@ -256,10 +263,19 @@ h1 {
   height: 48px;
 }
 
+/* In action video */
+
+.video-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 #video {
   width: 100%;
-  height: calc(100vw * 9 / 16 - 30px);
+  aspect-ratio: 16 / 9; /* portrait shape on small devices. Why? */
   border-radius: 10px;
+  border: none; /* remove default iframe border (browser dependent) */
 }
 
 .video-description {
@@ -271,6 +287,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: min(100%, 850px);
 }
 
 .product img {
@@ -384,6 +401,10 @@ footer {
   line-height: 32px
 }
 
+footer .container {
+  width: min(100%, 1200px);
+}
+
 .footer-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -391,12 +412,10 @@ footer {
 }
 
 .footer-section {
-  outline: 1px dotted;
   padding: 15px;
 }
 
 .footer-section h3 {
-  outline: 1px solid;
   margin-top: 0;
 }
 
@@ -405,22 +424,23 @@ footer a {
   display: inline-block;
 }
 
-footer li a:hover {
-  transform: scale(1.03);
-  padding-left: 0.05em;
+footer a:hover {
+  opacity: 75%;
 
 }
 
 .copyright {
   margin-top: 20px;
   text-align: center;
-  outline: 1px solid;
+
 }
 
 .social-icons {
   display: flex;
-  gap: 10px;
-  ;
+  justify-content: space-between;
+  max-width: 200px;
+  font-size: 2rem;
+  margin-top: 20px;
 }
 
 .features, .product {
